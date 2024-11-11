@@ -5,6 +5,8 @@ This is EveWatch, a mod I made for "Gorilla Tag", this was oringally going to be
 # Features
 > Disconnect, Makes you leave the lobby!
 
+> Join Last, Makes you join the last lobby!
+
 > Platforms, Press grip to use them!
 
 > Speed Boost, Type: {CurrentSpeedName} Gives you a little boost in speed!
