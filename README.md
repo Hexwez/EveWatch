@@ -31,14 +31,6 @@ This is EveWatch, a mod I made for "Gorilla Tag", this was oringally going to be
 
 > Aura Rad, Shows the radius of the tag aura!
 
-> Blue Grab, Summon blue lucy on a player! 
-
-> Red Grab, Summon red lucy on a player!  
-
-> Blue Chase, Make blue lucy chase a player!  
-
-> Red Chase, Make red lucy chase a player!
-
 > Tp Gun, Teleport around with a gun! 
 
 > Swap Speed, Changes your speed boost, boost. Type: {CurrentSpeedName} 
