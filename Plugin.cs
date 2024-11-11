@@ -1,4 +1,4 @@
-using BepInEx;
+﻿using BepInEx;
 using Photon.Pun;
 using System;
 using System.Collections.Generic;
@@ -12,10 +12,11 @@ using TMPro;
 using ExitGames.Client.Photon;
 using MonkeNotificationLib;
 using EveWatch.Librarys;
+using Watch.Mods;
 
 namespace EveWatch
 {
-    [BepInPlugin("Eve.EveWatch", "EveWatch", "0.1.8")]
+    [BepInPlugin("Eve.EveWatch", "EveWatch", "0.1.9")]
     public class Main : BaseUnityPlugin
     {
         static int counter;
@@ -39,12 +40,14 @@ namespace EveWatch
             Infection.SwitchTagType(true);
             Mods = new Dictionary<Mod, bool>()
             {
-                // {new Mod(TITlE, DESCRIPTION, ON ENABLED, UPDATED ENABLED (gets called constantly while the mod is enabled) ON DISABLE, toggleable (optional, if true, it will instantly disable itself), ENABLED (if its enabled}
+                // {new Mod(TITLE, DESCRIPTION, ON ENABLED, UPDATED ENABLED (gets called constantly while the mod is enabled) ON DISABLE, toggleable (optional, if true, it will instantly disable itself), ENABLED (if its enabled}
                 //Title
                 { new Mod("Eve Watch!", "Welcome to\nEveWatch! Look at\nthe CoC board\nfor the controls!", Empty, Empty, Empty, true), false},
 
                 //Room
                 { new Mod("Disconnect","Makes you leave\nthe lobby!", ()=>NetworkSystem.Instance.ReturnToSinglePlayer(), Empty, Empty, true), false },
+                //{ new Mod("Rejoin","Makes you rejoin\nthe lobby!", Other.Rejoin, Empty, Empty, true), false },
+                { new Mod("Join Last","Makes you join\nthe last lobby!", Other.JoinLast, Empty, Empty, true), false },
 
                 //Movement
                 { new Mod("Platforms","Press grip to\nuse them!", Empty, Movement.Platforms, Movement.OnPlatformDisable), false },
@@ -65,12 +68,6 @@ namespace EveWatch
                 { new Mod("Watch ESP", "Boxes around every\nEvewatch user!", Visual.WatchESP, Empty, Visual.DisableWatchESP), false },
                 { new Mod("Skell ESP", "Turns everyone\ninto skels\nthat you can see\nthrough\nwalls!", Visual.SkellESP, Empty, Visual.DisableSkellESP), false },
                 { new Mod("Aura Rad", "Shows the radius\nof the tag\naura!", Visual.TagAuraRad, Empty, Visual.TagAuraRadDisable), false },
-
-                //Lucy
-                { new Mod("Blue Grab", "Summon blue lucy on\na player!", Empty, ()=>Lucy.LucyGun(false, false), Empty), false },
-                { new Mod("Red Grab", "Summon red lucy on\na player!", Empty, ()=>Lucy.LucyGun(true, false), Empty), false },
-                { new Mod("Blue Chase", "Make blue lucy\nchase a player!", Empty, ()=>Lucy.LucyGun(false, true), Empty), false },
-                { new Mod("Red Chase", "Make red lucy\nchase a player!", Empty, ()=>Lucy.LucyGun(true, true), Empty), false },
 
                 //Guns
                 { new Mod("Tp Gun", "Teleport around\nwith a gun!", Empty, Guns.TpGun, Empty), false },
@@ -122,7 +119,7 @@ namespace EveWatch
 
                 GameObject desc = GameObject.Find("Environment Objects/LocalObjects_Prefab/TreeRoom/COC Text");
                 desc.GetComponent<TextMeshPro>().richText = true;
-                desc.GetComponent<TextMeshPro>().text = new WebClient().DownloadString("https://pastebin.com/raw/wErPZy4f").ToUpper();
+                desc.GetComponent<TextMeshPro>().text = new WebClient().DownloadString("https://pastebin.com/raw/DP3nsjBg").ToUpper();
 
                 GameObject holder = new GameObject("EveWatch");
                 holder.AddComponent<Visual>();
